@@ -32,6 +32,11 @@ module.exports = {
 			type : "string",
 			enum : ["admin", "player"],
 			defaultsTo : "player"
+		},
+
+		password : {
+			required : true,
+			type : "string"
 		}
 			
 	}
