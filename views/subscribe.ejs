@@ -1,0 +1,62 @@
+<div class="container-fluid"  ng-app="ts" ng-controller="EPFLSubscriptionController as main">
+	<h1>Subscription</h1>
+	<div ng-if="!main.validSCIPER && main.statusSubscribe == 0">
+		<div class="form-group">
+			<label for="sciper">Choose your SCIPER</label>
+			<input id="sciper" type="number" placeholder="SCIPER" class="form-control" ng-model="main.sciper">
+		</div>
+		<div class="form-group">
+			<button ng-click="main.sciperChoosen()" class="btn btn-default">Ok</button>
+		</div>
+	</div>
+	<div class="alert alert-warning" ng-if="main.statusSCIPER===403">
+		Registration is only allowed to students (PHD included)
+	</div>
+	<div class="alert alert-warning" ng-if="main.statusSCIPER===404">
+		Unknown SCIPER
+	</div>
+	<fieldset ng-if="main.validSCIPER">
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input type="text" id ="name" class="form-control" ng-model="main.info.fullName" readonly>
+		</div>
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input type="email" id="email" class="form-control" ng-model="main.info.email" readonly>
+		</div>
+		<div class="form-group">
+			<label for="section">Section</label>
+			<input type="email" id="section" class="form-control" ng-model="main.info.section" readonly>
+		</div>
+		<div class="form-group" ng-class="{'has-success' : !main.passwordCondition()}">
+			<label for="password" class="control-label">Password</label>
+			<input type="password" id="password" class="form-control" ng-model="main.newUser.password">
+		</div>
+		<div class="form-group" ng-class="{'has-success' : !main.passwordCondition()}">
+			<label for="password" class="control-label">Password</label>
+				<input type="password" class="form-control" id="password" ng-model="main.password2">
+		</div>
+		<div class="alert alert-danger" ng-if="main.passwordCondition()">
+			{{main.passwordCondition()}}
+		</div>
+		<div class="form-group">
+			<label>Image</label><br/>
+			<img class="img-circle" width="140px" ng-src="{{main.info.portrait}}">
+		</div>
+		<div class="form-group">
+			<button ng-disabled="main.passwordCondition()" class="btn btn-lg btn-primary" ng-click="main.submit()">Subscribe</button>
+		</div>
+	</fieldset>
+	<div class = "alert alert-success" ng-if="main.statusSubscribe === 201">
+		Your are subscribed, you can now log in
+	</div>
+	<div class = "alert alert-danger" ng-if="main.statusSubscribe === 302">
+		Your SCIPER is already in our database. If you forgot your password send us an email
+	</div>
+	<div class = "alert alert-warning" ng-if="main.statusSubscribe === -1">
+		Pending...
+	</div>
+	<div class="alert alert-danger" ng-if="main.subscribeError">
+		We failed. Either you are trying to trick our system or we did something wrong. If the problem persists, contact us.
+	</div>
+</div>
