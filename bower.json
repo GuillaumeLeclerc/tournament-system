@@ -1,0 +1,27 @@
+{
+  "name": "tournament-system",
+  "version": "0.0.1",
+  "authors": [
+    "Guillaume Leclerc <guillaume.leclerc@epfl.ch>"
+  ],
+  "description": "tournament system for agepoly epfl",
+  "main": "app.js",
+  "keywords": [
+    "epfl",
+    "tournament",
+    "polysports"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.4.3",
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4"
+  }
+}
