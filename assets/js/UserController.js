@@ -46,3 +46,28 @@ angular.module("ts").controller("EPFLSubscriptionController", function($scope, $
 		});
 	}
 });
+
+angular.module("ts").controller("LoginController", function($scope, $http) {
+	var main = this;
+	main.email = "";
+	main.password = "";
+	main.requestStatus = 0;
+	main.login = function() {
+		main.requestStatus = -1;
+		$http({
+			method : "POST",
+			url : "/user/login/",
+			data : {
+				email : main.email,
+				password : main.password
+			}
+		}).success(function(data, status) {
+			main.requestStatus = status;
+			if(requestStatus === 200) {
+				// TODO redirect
+			}
+		}).error(function(data, status){
+			main.requestStatus = status;
+		});;
+	}
+});

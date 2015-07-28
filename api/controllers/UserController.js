@@ -1,3 +1,4 @@
+var async = require("async");
 module.exports = {
 
 	subscribe : function(req, res) {
@@ -34,5 +35,41 @@ module.exports = {
 				res.serverError();
 			}
 		});
+	},
+
+	login : function(req, res) {
+		if (req.method === "POST" && req.wantsJSON) {
+			var email = req.param("email");
+			var password = req.param("password");
+			var userInfos = null;
+			async.waterfall([
+				function(callback) {
+					User.findOne({email : email}, function(error, res) {
+						if (error) {
+							return callback(error);
+						} else if (res) {
+							return callback (null, res.password);
+						} else {
+							return callback("NotFound");
+						}
+					});
+				},
+				PasswordsService.comparePassword.bind(PasswordsService, password)
+			], function(error, isMatching) {
+				if (!isMatching || error === "NotFound") {
+					res.forbidden();
+				} else if (error) {
+					sails.log.error(error);
+					res.serverError();
+				} else {
+					req.session.authenticated = true;
+					req.session.user = userInfos;
+					res.statusCode = 200;
+					res.end();
+				}
+			});
+		} else {
+			res.view("login");
+		}
 	}
 }

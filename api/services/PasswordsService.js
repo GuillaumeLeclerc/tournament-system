@@ -8,5 +8,6 @@ module.exports = {
 			lodash.bind(bcrypt.genSalt, bcrypt),
 			lodash.bind(bcrypt.hash, bcrypt, password)
 		], callback);
-	}
+	},
+	comparePassword : bcrypt.compare.bind(bcrypt)
 }
