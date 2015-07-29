@@ -1,0 +1,41 @@
+<div class="container-fluid"  ng-app="teams" ng-controller="TeamsController as main">
+	<h1>My teams</h1>
+	<div class="form-inline">
+		<div class="form-group">
+			<input id="newTeamName" class="form-control" type="text" placeholder="New Team Name" ng-model="main.newTeamName">
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary" ng-click="main.createTeam()">Add team</button>
+		</div>
+	</div>
+	<div ng-repeat="team in main.teams">
+		<h2>{{team.name}} 
+		<button class="btn btn-danger" ng-click="main.deleteTeam(team.id)">Delete</button>
+		</h2>
+		<table class="table table-bordered table-striped">
+			<tr>
+				<th width="110px">Portrait</th>
+				<th>Name</th>
+				<th>Actions</th>
+			</tr>
+			<tr ng-repeat="member in team.members">
+				<td><img width="100px" class="img-thumbnail" ng-src="{{member.portrait}}" alt=""></td>
+				<td>{{member.name}}</td>
+				<td>
+					<button class="btn btn-danger" ng-if="!member.isLeader">Drop</button>
+				</td>
+			</tr>
+			<tr class="info">
+				<td>New</td>
+				<td>
+				<input id="toto" class="prefetch form-control typeahead" type="text" name="" ng-model="newUser">
+				</td>
+				<td>
+				<button class="btn btn-primary" ng-click="addMember(team.id, newUser)">Add new user</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="alert alert-info" ng-if="main.teams===null">Loading...</div>
+	<div class="alert alert-danger" ng-if="main.error">Error : {{main.error}}</div>
+</div>

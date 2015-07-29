@@ -48,6 +48,7 @@ module.exports = {
 						if (error) {
 							return callback(error);
 						} else if (res) {
+							userInfos = res;
 							return callback (null, res.password);
 						} else {
 							return callback("NotFound");

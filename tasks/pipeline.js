@@ -30,6 +30,7 @@ var jsFilesToInject = [
   'js/dependencies/jquery.min.js',
   'js/dependencies/bootstrap.min.js',
   'js/dependencies/angular.min.js',
+  'js/dependencies/typeahead.min.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.

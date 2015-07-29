@@ -1,5 +1,5 @@
-angular.module("ts", []);
-angular.module("ts").controller("EPFLSubscriptionController", function($scope, $http) {
+angular.module("user", []);
+angular.module("user").controller("EPFLSubscriptionController", function($scope, $http) {
 	var ctrl = this;
 	ctrl.validSCIPER = false;
 	ctrl.statusSubscribe = 0;
@@ -47,7 +47,7 @@ angular.module("ts").controller("EPFLSubscriptionController", function($scope, $
 	}
 });
 
-angular.module("ts").controller("LoginController", function($scope, $http) {
+angular.module("user").controller("LoginController", function($scope, $http) {
 	var main = this;
 	main.email = "";
 	main.password = "";
