@@ -1,0 +1,14 @@
+<div class="jumbotron bg-danger" ng-if="nextMatch">
+	<p>
+		<strong>{{nextMatch.teamA}}</strong> Vs. <strong>{{nextMatch.teamB}}</strong> <br/>
+		Tournament : {{nextMatch.tournament}} <br/>
+		{{nextMatch.date | date : "medium"}}
+	</p>
+	<p>
+		<button type="button" class="btn btn-primary">See match details</button>
+	</p>
+</div>
+<alert ng-repeat="alert in alerts" type="info" close="closeAlert($index)">
+<h3>{{alert.title}}</h3>
+	{{alert.content}}
+</alert>
