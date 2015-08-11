@@ -1,4 +1,7 @@
+angular.module("tournament-system.services", []);
+
 angular.module("tournament-system", [
+	"tournament-system.services",
 	"ngRoute",
 	"ui.bootstrap",
 	"ui.bootstrap.tpls"
