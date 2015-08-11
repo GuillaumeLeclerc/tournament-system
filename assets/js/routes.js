@@ -6,7 +6,10 @@ app.config(["$routeProvider", function($routeProvider) {
 			templateUrl : "templates/home.html",
 			controller : "HomeController"
 		}).
+		when("/404", {
+			templateUrl : "templates/404.html"
+		}).
 		otherwise({
-			redirectTo : "/"
+			redirectTo : "/404"
 		});
 }]);
