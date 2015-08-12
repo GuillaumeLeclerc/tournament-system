@@ -1,7 +1,7 @@
 var app = angular.module("tournament-system");
 
 app.controller("HomeController", ["$scope", "NotificationService", function($scope, NotificationService) {
-	$scope.alerts = NotificationService.notifications;
+	$scope.getNotifications = NotificationService.getNotifications;
 	$scope.nextMatch = {
 		id : 17,
 		tournament : "volley mixte",

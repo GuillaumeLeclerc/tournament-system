@@ -11,8 +11,8 @@
 		</p>
 	</div>
 </div>
-<h1 x-ng-if="alerts.length">Notifications</h1>
-<alert ng-repeat="alert in alerts" type="info" close="closeAlert($index)">
+<h1 x-ng-if="getNotifications().length">Notifications</h1>
+<alert ng-repeat="alert in getNotifications()" type="info" close="closeAlert($index)">
 <h3>{{alert.title}}</h3>
 	{{alert.message}}
 </alert>
