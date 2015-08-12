@@ -1,7 +1,9 @@
 angular.module("tournament-system.services", []);
+angular.module("tournament-system.directives", []);
 
 angular.module("tournament-system", [
 	"tournament-system.services",
+	"tournament-system.directives",
 	"ngRoute",
 	"ui.bootstrap",
 	"ui.bootstrap.tpls"
