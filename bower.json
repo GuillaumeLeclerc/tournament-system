@@ -27,5 +27,5 @@
     "angular-route": "1.3.17",
     "angular-bootstrap": "~0.13.3",
     "angular-resource-sails": "~1.1.10"
-  },
+  }
 }
