@@ -1,0 +1,1 @@
+../../../bower_components/angular-resource-sails/src/sailsResource.js
