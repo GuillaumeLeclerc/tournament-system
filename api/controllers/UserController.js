@@ -37,6 +37,24 @@ module.exports = {
 		});
 	},
 
+	me : function(req, res) {
+		if (req.session.authenticated) {
+			res.json(req.session.user);
+		} else {
+			User.findOne({id : "guest"}, function(error, result) {
+				if (error) {
+					sails.log.error(error);
+					res.serverError();
+				} else if (!result) {
+					sails.log.error("guest account not found, Please create an accound with id=guest and the lowest rights possible");
+					res.serverError();
+				} else {
+					res.json(result);
+				}
+			});	
+		}
+	},
+
 	login : function(req, res) {
 		if (req.method === "POST" && req.wantsJSON) {
 			var email = req.param("email");
