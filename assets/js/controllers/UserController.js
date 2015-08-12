@@ -1,52 +1,53 @@
-angular.module("user", []);
-angular.module("user").controller("EPFLSubscriptionController", function($scope, $http) {
-	var ctrl = this;
-	ctrl.validSCIPER = false;
-	ctrl.statusSubscribe = 0;
-	ctrl.statusSCIPER = 0;
-	ctrl.newUser = {
+angular.module("tournament-system").
+controller("EPFLSubscriptionController", ["$scope", "$http", function($scope, $http, $modalInstance) {
+	$scope.validSCIPER = false;
+	$scope.statusSubscribe = 0;
+	$scope.statusSCIPER = 0;
+	$scope.sciper = "";
+	$scope.newUser = {
 		password : ""
 	};
-	ctrl.password2 = "";
-	ctrl.sciperChoosen = function() {
+	$scope.password2 = "";
+
+	$scope.sciperChoosen = function() {
 		$http({
 			method : "GET",
-			url : "/user/getInfoFromSCIPER?sciper=" + ctrl.sciper
+			url : "/user/getInfoFromSCIPER?sciper=" + $scope.sciper
 		}).success(function(data, status) {
-			ctrl.statusSCIPER = status;
-			ctrl.validSCIPER = true;
-			ctrl.newUser.sciper = ctrl.sciper;
-			ctrl.info = data;
+			$scope.statusSCIPER = status;
+			$scope.validSCIPER = true;
+			$scope.newUser.sciper = $scope.sciper;
+			$scope.info = data;
 		}).error(function(data, status) {
-			ctrl.validSCIPER = false;
-			ctrl.statusSCIPER = status;
+			$scope.validSCIPER = false;
+			$scope.statusSCIPER = status;
 		});;
 	}
-	ctrl.passwordCondition = function() {
-		var password = ctrl.newUser.password;
+	$scope.passwordCondition = function() {
+		var password = $scope.newUser.password;
 		if (password.length < 6) {
 			return "Password must be at least 6 characters long";
-		} else if (ctrl.password2 != password) {
+		} else if ($scope.password2 != password) {
 			return "Passwords must match";
 		} else {
 			return false;
 		}
 	};
-	ctrl.submit = function() {
-		ctrl.statusSubscribe = -1; // request pending
-		ctrl.validSCIPER = 0;
+	$scope.submit = function() {
+		$scope.statusSubscribe = -1; // request pending
+		$scope.validSCIPER = 0;
 		$http({
 			method : "POST",
 			url : "/user/subscribeEPFLStudent/",
-			data : ctrl.newUser
+			data : $scope.newUser
 		}).success(function(data, status) {
-			ctrl.statusSubscribe = status;
+			$scope.statusSubscribe = status;
 		}).error(function (data, status) {
-			ctrl.statusSubscribe = status;
+			$scope.statusSubscribe = status;
 		});
 	}
-});
-
+}]);
+/*
 angular.module("user").controller("LoginController", function($scope, $http) {
 	var main = this;
 	main.email = "";
@@ -71,3 +72,4 @@ angular.module("user").controller("LoginController", function($scope, $http) {
 		});;
 	}
 });
+*/
