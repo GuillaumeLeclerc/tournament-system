@@ -37,6 +37,11 @@ module.exports = {
 		password : {
 			required : true,
 			type : "string"
+		},
+
+		notifications : {
+			collection : "notification",
+			via : "target"
 		}
 			
 	}

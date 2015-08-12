@@ -27,6 +27,7 @@ module.exports = {
 	  }, 
 
 	  target : {
+		  defaultsTo : [],
 		  model : "user",
 		  required : true
 	  }
