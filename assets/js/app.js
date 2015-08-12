@@ -1,7 +1,6 @@
 angular.module("tournament-system.services", ["tournament-system.resources"]);
 angular.module("tournament-system.directives", []);
 angular.module("tournament-system.resources", ["sailsResource"]);
-angular.module("tournament-system.resources", ["sailsResource"]);
 
 angular.module("tournament-system", [
 	"tournament-system.services",

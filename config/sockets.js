@@ -38,7 +38,7 @@ module.exports.sockets = {
   * via port 6379                                                            *
   *                                                                          *
   ***************************************************************************/
-  // adapter: 'memory',
+   adapter: 'memory',
 
   //
   // -OR-
@@ -65,7 +65,7 @@ module.exports.sockets = {
   *                                                                          *
   ***************************************************************************/
 
-  // grant3rdPartyCookie: true,
+   grant3rdPartyCookie: true,
 
 
 

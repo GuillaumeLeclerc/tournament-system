@@ -2,17 +2,17 @@
 	<div x-ng-switch="isLoggedIn()">
 		<div x-ng-switch-when="true">
 			<ul class="nav navbar-nav navbar-right">
-				<li x-ts-navlink="/profile" title="{{getUserInfo().fullname}}">
+				<li x-ts-navlink="/profile" title="{{getUserInfo().name}}">
 			</ul>
 		</div>
 		<form x-ng-switch-default class="navbar-form navbar-right" name="login">
 			<div class="form-group">
-				<input type="text" placeholder="Email" name="email" class="form-control">
+				<input type="text" placeholder="Email" name="email" class="form-control" x-ng-model="loginUser.email">
 			</div>
 			<div class="form-group">
-				<input type="password" placeholder="Password" name="password" class="form-control">
+				<input type="password" placeholder="Password" name="password" class="form-control" x-ng-model="loginUser.password">
 			</div>
-			<button type="button" class="btn btn-primary">Sign in</button>
+			<button type="button" class="btn btn-primary" x-ng-click="logNow()">Sign in</button>
 			<button x-ng-click="register()" type="button" class="btn btn-success">Sign up</button>
 		</form>
 	</div>

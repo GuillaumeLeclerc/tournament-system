@@ -7,10 +7,10 @@ app.directive("tsNavlink", ["$location", function($location) {
 		template : "<li x-ng-class=\"{active : isActive()}\"><a x-ng-click='clicked()' href=''>{{text}} <span class=\"badge\">{{badge}}</span> <span class='sr-only' x-ng-if='isActive()'> (current)</span></a></li>",
 		scope : {
 			url : "@tsNavlink",
-			badge : "=tsBadge"
+			badge : "=tsBadge",
+			text : "@title"
 		},
 		link : function($scope, element, attributes) {
-			$scope.text = attributes.title;
 			$scope.isActive = function() {
 				return $scope.url === $location.path();
 			}

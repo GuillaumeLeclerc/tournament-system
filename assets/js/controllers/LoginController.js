@@ -1,8 +1,16 @@
 var app = angular.module("tournament-system");
 
-app.controller("LoginController", ["$scope", "UserService", "User", "$modal", function($scope, UserService, User, $modal) {
+app.controller("LoginController", ["$scope", "UserService", "$modal", function($scope, UserService, $modal) {
+	
 	$scope.getUserInfo = UserService.getUserInfo;
-	$scope.isLoggedIn = UserService.isLoggedIn;
+	$scope.isLoggedIn =  UserService.isLoggedIn
+
+	$scope.loginUser = {};
+
+	$scope.logNow = function() {
+		UserService.login($scope.loginUser.email, $scope.loginUser.password);
+	}
+
 	$scope.register = function() {
 		var modalInstance = $modal.open({
 			animation : true,
