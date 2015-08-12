@@ -8,11 +8,9 @@ app.controller("HomeController", ["$scope", "NotificationService", function($sco
 		teamA : "les bronzés font du volley",
 		teamB : "blop",
 		date : new Date()
-		
 	};
 
 	$scope.closeAlert = function(index) {
-		NotificationService.delete(index);
+		$scope.alerts[index].$delete();
 	}
-
 }]);
