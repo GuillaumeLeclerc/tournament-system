@@ -3,7 +3,7 @@
 		<li x-ts-navlink="/" title="Home" x-ts-badge="numberOfNotifications()"></li>
 	</ul>
 	<ul class="nav nav-sidebar">
-		<li x-ts-navlink="/profile" title="My profile"></li>
+		<li x-ts-navlink="/profile" title="My profile" x-ng-if="isConnected()"></li>
 		<li x-ts-navlink="/tournaments" title="Tournaments"></li>
 		<li x-ts-navlink="/subscription" title="Subscription"></li>
 	</ul>

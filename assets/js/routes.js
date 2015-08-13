@@ -6,6 +6,10 @@ app.config(["$routeProvider", function($routeProvider) {
 			templateUrl : "templates/home.html",
 			controller : "HomeController"
 		}).
+		when("/profile", {
+			templateUrl : "templates/profile.html",
+			controller : "ProfileController"
+		}).
 		when("/404", {
 			templateUrl : "templates/404.html"
 		}).
