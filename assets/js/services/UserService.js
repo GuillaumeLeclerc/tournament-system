@@ -10,7 +10,12 @@ app.service("UserService", ["User", function(User) {
 			l.email = email;
 			l.password = password;
 			l.$login().then(function() {
+				console.log(arguments);
 				userInfo = User.get({id : "me"});
+			}, function() {
+				console.log("error");
+				console.log(arguments);
+
 			});
 		},
 		isLoggedIn : function() {
