@@ -29,7 +29,11 @@ app.service("NotificationService", [
 	var lastRequest =  null;
 
 	var refreshNotifications = function() {
-		lastRequest = User.notifications({id : lastUserId});
+		if (lastUserId !== "me" && lastUserId !== "") {
+			lastRequest = User.notifications({id : lastUserId});
+		} else {
+			lastRequest = [];
+		}
 	}
 
 	var getNotifications = function() {
@@ -38,7 +42,7 @@ app.service("NotificationService", [
 			lastUserId = userId;
 			refreshNotifications();
 		}
-		if (userId === "") {
+		if (lastRequest === null) {
 			return [];
 		} else {
 			return lastRequest;
