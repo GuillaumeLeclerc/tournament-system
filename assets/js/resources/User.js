@@ -5,7 +5,12 @@ app.service("User", ["sailsResource", function(sailsResource) {
 		login : {
 			method : "POST",
 			url : "/user/login"
-		}
+		},
+		notifications : {
+			method : "GET",
+			url : "/user/:id/notifications",
+			isArray : true
+		},
 	},{
 		verbose : true,
 	});
