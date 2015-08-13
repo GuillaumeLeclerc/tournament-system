@@ -11,6 +11,7 @@ app.controller("HomeController", ["$scope", "NotificationService", function($sco
 	};
 
 	$scope.closeAlert = function(index) {
-		$scope.alerts[index].$delete();
+		var notifToClose = NotificationService.getNotifications()[index];
+		NotificationService.delete(notifToClose.id);
 	}
 }]);
