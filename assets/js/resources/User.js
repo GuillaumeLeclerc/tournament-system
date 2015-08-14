@@ -11,6 +11,10 @@ app.service("User", ["sailsResource", function(sailsResource) {
 			url : "/user/:id/notifications",
 			isArray : true
 		},
+		logout : {
+			method : "GET",
+			url : "/user/logout",
+		}
 	},{
 		verbose : true,
 	});

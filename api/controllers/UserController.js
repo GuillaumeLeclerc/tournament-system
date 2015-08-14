@@ -55,6 +55,13 @@ module.exports = {
 		}
 	},
 
+	logout : function(req, res) {
+		req.session.authenticated = false;
+		req.session.user = {};
+		res.statusCode = 200;
+		res.end();
+	},
+
 	login : function(req, res) {
 		if (req.method === "POST" && req.wantsJSON) {
 			var email = req.param("email");

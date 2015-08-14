@@ -8,8 +8,16 @@ app.controller("LoginController", ["$scope", "UserService", "$modal", function($
 	$scope.loginUser = {};
 
 	$scope.logNow = function() {
-		UserService.login($scope.loginUser.email, $scope.loginUser.password);
+		UserService.login($scope.loginUser.email, $scope.loginUser.password, function() {
+			$modal.open({
+				templateUrl : "templates/wrongPasswordModal.html",
+				controller : "wrongPasswordController",
+				animation : true
+			});
+		});
 	}
+
+	$scope.logout = UserService.logout;
 
 	$scope.register = function() {
 		var modalInstance = $modal.open({

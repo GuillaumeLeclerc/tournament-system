@@ -1,22 +1,24 @@
 var app = angular.module("tournament-system");
 
-app.service("UserService", ["User", function(User) {
+app.service("UserService", ["User", "$timeout", function(User, $timeout) {
 	var userInfo = User.get({id : "me"});
 	var currentUserInfo = null;
 
 	return {
-		login : function(email, password) {
+		login : function(email, password, errorCallback) {
 			var l = new User();
 			l.email = email;
 			l.password = password;
 			l.$login().then(function() {
 				console.log(arguments);
 				userInfo = User.get({id : "me"});
-			}, function() {
-				console.log("error");
-				console.log(arguments);
-
+			}, function(jwr) {
+				$timeout(errorCallback);
 			});
+		},
+		logout : function() {
+			User.logout();
+			userInfo = User.get({id : "me"});
 		},
 		isLoggedIn : function() {
 			return userInfo.id && userInfo.id != "guest";

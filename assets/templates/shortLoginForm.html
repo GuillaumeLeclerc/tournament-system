@@ -2,7 +2,8 @@
 	<div x-ng-switch="isLoggedIn()">
 		<div x-ng-switch-when="true">
 			<ul class="nav navbar-nav navbar-right">
-				<li x-ts-navlink="/profile" title="{{getUserInfo().name}}">
+				<x-ts-navlink path="/profile" title="{{getUserInfo().name}}"></x-ts-navlink>
+				<x-ts-navlink x-ng-click="logout()" title="Logout"></x-ts-navlink>
 			</ul>
 		</div>
 		<form x-ng-switch-default class="navbar-form navbar-right" name="login">

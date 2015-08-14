@@ -1,19 +1,19 @@
 <div x-ng-controller="sidebarController">
 	<ul class="nav nav-sidebar">
-		<li x-ts-navlink="/" title="Home" x-ts-badge="numberOfNotifications()"></li>
+		<x-ts-navlink path="/" title="Home" x-ts-badge="numberOfNotifications()"></x-ts-navlink>
 	</ul>
 	<ul class="nav nav-sidebar">
-		<li x-ts-navlink="/profile" title="My profile" x-ng-if="isConnected()"></li>
-		<li x-ts-navlink="/tournaments" title="Tournaments"></li>
-		<li x-ts-navlink="/subscription" title="Subscription"></li>
+		<x-ts-navlink path="/profile" title="My profile" x-ng-if="isConnected()"></x-ts-navlink>
+		<x-ts-navlink path="/tournaments" title="Tournaments"></x-ts-navlink>
+		<x-ts-navlink path="/subscription" title="Subscription"></x-ts-navlink>
 	</ul>
 	<ul class="nav nav-sidebar">
-		<li x-ts-navlink="/teamManagement" title="Team Management"></li>
-		<li x-ts-navlink="/tournamentManagement" title="Tournament Management"></li>
-		<li x-ts-navlink="/notificationManagement" title="Notification Management"></li>
+		<x-ts-navlink path="/teamManagement" title="Team Management"></x-ts-navlink>
+		<x-ts-navlink path="/tournamentManagement" title="Tournament Management"></x-ts-navlink>
+		<x-ts-navlink path="/notificationManagement" title="Notification Management"></x-ts-navlink>
 	</ul>
 
 	<ul class="nav nav-sidebar">
-		<li x-ts-navlink="/faq" title="FAQ"></li>
+		<x-ts-navlink path="/faq" title="FAQ"></x-ts-navlink>
 	</ul>
 </div>
