@@ -1,44 +1,30 @@
-var lodash = require("lodash");
+/**
+* Team.js
+*
+* @description :: TODO: You might write a short summary of how this model works and what it represents here.
+* @docs        :: http://sailsjs.org/#!documentation/models
+*/
 
 module.exports = {
-	attributes : {
-		id : {
-			primaryKey : true,
-			unique : true,
-			autoIncrement : true,
-			type : "integer"
-		},
 
-		leader : {
-			required : true,
-			model : "User"
-		},
+  attributes: {
+	  id : {
+		  type : "integer",
+		  autoIncrement : true,
+		  primaryKey : true,
+		  unique : true
+	  },
 
-		members : {
-			collection : "User"
-		},
+	  name : {
+		  type : "string",
+		  required : true,
+		  unique : true
+	  },
 
-		name : {
-			required : true,
-			type : "string"
-		},
-
-		getOutputForm : function(me) {
-			var entry = this;
-			if (me) {
-				entry.isMine = me === entry.leader.id;
-			}
-			entry.leader.isLeader = true;
-			lodash.each(entry.members, function(member) {
-				member.isLeader = false;
-			});
-			entry.members.unshift(entry.leader);
-			lodash.each(entry.members, function(member) {
-				delete member.password;
-			});
-			return entry;
-		}
-	}
-}
-
+	  tournament : {
+		  model : "tournament",
+		  required : true
+	  }
+  }
+};
 

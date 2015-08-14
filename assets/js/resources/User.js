@@ -18,7 +18,6 @@ app.service("User", ["sailsResource", function(sailsResource) {
 	},{
 		verbose : true,
 	});
-	window.User = User;
 	return User;
 }]);
 
