@@ -27,14 +27,14 @@ It may vary upon your operating system but on ubuntu you just have to run
 
 `npm install -g sails grunt-cli bower`
 
-_ Note : _ It may require root access
+**Note :** It may require root access
 
 
 ### Clone the repo : 
 
 `git clone https://github.com/GuillaumeLeclerc/tournament-system.git`
 
-__ Note : __ you can use ssh too
+**Note :** you can use ssh too
 
 ### Go into the directory
 
