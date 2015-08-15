@@ -33,18 +33,28 @@
 			<input type="password" id="password" class="form-control" ng-model="newUser.password">
 		</div>
 		<div class="form-group" ng-class="{'has-success' : !passwordCondition()}">
-			<label for="password" class="control-label">Password</label>
-				<input type="password" class="form-control" id="password" ng-model="$parent.password2">
+			<label for="password" class="control-label">Repeat Password</label>
+			<input type="password" class="form-control" id="password" ng-model="$parent.password2">
 		</div>
 		<div class="alert alert-danger" ng-if="passwordCondition()">
 			{{passwordCondition()}}
+		</div>
+		<label class="control-label">Sex</label>
+		<br/>
+		<div class="btn-group">
+			<label class="btn btn-primary" ng-model="newUser.sex" btn-radio="'male'">Male</label>
+			<label class="btn btn-primary" ng-model="newUser.sex" btn-radio="'female'">Female</label>
+		</div>
+		<br/><br/>
+		<div class="alert alert-danger" ng-if="!newUser.sex">
+			Please answer the field below
 		</div>
 		<div class="form-group">
 			<label>Image</label><br/>
 			<img class="img-circle" width="140px" ng-src="{{info.portrait}}">
 		</div>
 		<div class="form-group">
-			<button ng-disabled="passwordCondition()" class="btn btn-lg btn-primary" ng-click="submit()">Subscribe</button>
+			<button ng-disabled="!newUser.sex || passwordCondition()" class="btn btn-lg btn-primary" ng-click="submit()">Subscribe</button>
 		</div>
 	</fieldset>
 	<div class = "alert alert-success" ng-if="statusSubscribe === 201">
@@ -52,6 +62,9 @@
 	</div>
 	<div class = "alert alert-danger" ng-if="statusSubscribe === 302">
 		Your SCIPER is already in our database. If you forgot your password send us an email
+	</div>
+	<div class = "alert alert-danger" ng-if="statusSubscribe >0 && statusSubscribe != 201 && statusSubscribe != 302">
+		Un unknown error has appeared, plese contact use and remember the date/hour of this problem. Thank you.
 	</div>
 	<div class = "alert alert-warning" ng-if="statusSubscribe === -1">
 		Pending...

@@ -25,7 +25,7 @@ function getInfosFromSciper(sciper, callback) {
 	});
 };
 
-function subscribeUser (sciper, password, callback) {
+function subscribeUser (sciper, password, sex, callback) {
 	async.waterfall([
 		function(callback) {
 			User.findOneById("EPFL-"+sciper, function(error, result) {
@@ -44,6 +44,7 @@ function subscribeUser (sciper, password, callback) {
 			var informations = computedData[0];
 			informations.password = computedData[1];
 			informations.id = "EPFL-" + informations.sciper;
+			informations.sex = sex;
 			informations.section = "EPFL-" + informations.section;
 			informations.name = informations.fullName;
 			delete informations.fullName;

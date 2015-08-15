@@ -39,6 +39,12 @@ module.exports = {
 			type : "string"
 		},
 
+		sex : {
+			type : "string",
+			required : true,
+			enum : ["male", "female"]
+		},
+
 		notifications : {
 			collection : "notification",
 			via : "target"

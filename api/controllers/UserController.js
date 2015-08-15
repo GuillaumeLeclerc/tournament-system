@@ -6,7 +6,7 @@ module.exports = {
 	},
 
 	subscribeEPFLStudent : function(req, res) {
-		EPFLService.subscribeUser(req.param("sciper"), req.param("password"), function(error) {
+		EPFLService.subscribeUser(req.param("sciper"), req.param("password"), req.param("sex"), function(error) {
 			if (error == "NotFound" || error == "Forbidden") {
 				res.badRequest();
 			} else if(error == "Duplicate") {
