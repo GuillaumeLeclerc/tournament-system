@@ -47,6 +47,9 @@ app.controller("SubscriptionController", ["$scope", "Tournament", "UserService",
 		return $scope.newTeam.tournament !== 0;
 	}
 
+	$scope.isFun = function() {
+		return _.compact(_.uniq(_.pluck($scope.newTeam.members, "section"))).length > 1;
+	}
 	$scope.deselect();
 
 
