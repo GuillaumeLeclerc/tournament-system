@@ -17,9 +17,9 @@ app.controller("SubscriptionController", ["$scope", "Tournament", "UserService",
 	var allUsers = UserService.getUsers();
 
 	$scope.allUsers = function() {
-		return _.filter(allUsers, function(value) {
-			return value.id != "guest" //remove guest
-				&& !_.any($scope.newTeam.members, {id : value.id}) ; // do not allow duplicates
+		return _.reject(allUsers, function(value) {
+			return value.id === "guest" //remove guest
+				|| _.any($scope.newTeam.members, {id : value.id}) ; // do not allow duplicates
 		});
 	}
 
