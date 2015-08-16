@@ -35,7 +35,7 @@
 					<tr x-ng-repeat="player in newTeam.members">
 						<th>#{{$index + 1}}</th>
 						<td>
-							<input x-ng-if="!player.id" autocomplete="off" name="newTeamMember{{$index}}" id="newTeamMember{{$index}}" x-ng-model="player.id" typeahead-template-url="typeaheadUserTemplate.html" typeahead="pl.id as (pl.id + ' ' + pl.name) for pl in allUsers"placeholder="Name or sciper" class="form-control input-sm" type="text" name="" typeahead-editable="false" typeahead-on-select="playerSelected($item, $model, $label, $index)" typeahead-select-on-exact="true">
+							<input x-ng-if="!player.id" autocomplete="off" name="newTeamMember{{$index}}" id="newTeamMember{{$index}}" x-ng-model="player.id" typeahead-template-url="typeaheadUserTemplate.html" typeahead="pl.id as (pl.id + ' ' + pl.name) for pl in allUsers()"placeholder="Name or sciper" class="form-control input-sm" type="text" name="" typeahead-editable="false" typeahead-on-select="playerSelected($item, $model, $label, $index)" typeahead-select-on-exact="true">
 							<span x-ng-if="player.id"><strong> {{player.id}} </strong> - {{player.name}}</span>
 						</td>
 						<td>

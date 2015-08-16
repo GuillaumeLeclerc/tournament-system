@@ -14,7 +14,14 @@ app.controller("SubscriptionController", ["$scope", "Tournament", "UserService",
 	$scope.newTeam = {};
 	$scope.selectedTournament = null;
 
-	$scope.allUsers = UserService.getUsers();
+	var allUsers = UserService.getUsers();
+
+	$scope.allUsers = function() {
+		return _.filter(allUsers, function(value) {
+			return value.id != "guest" //remove guest
+				&& !_.any($scope.newTeam.members, {id : value.id}) ; // do not allow duplicates
+		});
+	}
 
 	$scope.select = function(tid) {
 		$scope.newTeam.tournament = tid;
