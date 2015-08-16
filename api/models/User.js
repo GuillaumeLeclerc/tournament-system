@@ -48,8 +48,18 @@ module.exports = {
 		notifications : {
 			collection : "notification",
 			via : "target"
+		},
+
+		teams : {
+			collection : "team",
+			vial : "members",
+			dominant : true
+		},
+
+		leads : {
+			collection : "team",
+			via : "captain"
 		}
-			
 	}
 }
 

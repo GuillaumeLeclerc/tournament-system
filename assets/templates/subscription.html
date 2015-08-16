@@ -1,0 +1,56 @@
+<h1>Subscription {{title}}</h1>
+
+<tabset>
+	<tab x-ng-repeat="team in teams">
+		<tab-heading>{{team.name}}</tab-heading>
+	</tab>
+	<tab>
+	<tab-heading><i class="glyphicon glyphicon-plus"></i> Create a new team</tab-heading>
+		<h2>Choose your tournament</h2>
+		<table class="table table-hover table-bordered table-stripped">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th></th>
+			</tr>
+			<tr x-ng-repeat="tournament in availableTournaments" x-ng-if="newTeam.tournament === tournament.id || !isSelected()">
+				<th width="0%">#{{tournament.id}}</th>
+				<td width="100%">{{tournament.name}}</td>
+				<td width="0%">
+					<button x-ng-if="newTeam.tournament === 0" type="button" class="btn btn-xs btn-primary" x-ng-click="select(tournament.id)">Select</button>
+					<button x-ng-if="newTeam.tournament === tournament.id" type="button" class="btn btn-xs btn-danger" x-ng-click="deselect()">Deselect</button>
+				</td>
+			</tr>
+		</table>
+
+		<div x-ng-if="isSelected()">
+			<h2>Choose your team members</h2>
+			<form action="" autocomplete="off">
+				<table class="table table-stripped table-hover table-stripped table-bordered">
+					<tr>
+						<th width="0%">N°</th>
+						<th width="100%">Name</th>
+						<th width="0%"></th>
+					</tr>
+					<tr x-ng-repeat="player in newTeam.members">
+						<th>#{{$index + 1}}</th>
+						<td>
+							<input x-ng-if="!player.id" autocomplete="off" name="newTeamMember{{$index}}" id="newTeamMember{{$index}}" x-ng-model="player.id" typeahead-template-url="typeaheadUserTemplate.html" typeahead="pl.id as (pl.id + ' ' + pl.name) for pl in allUsers"placeholder="Name or sciper" class="form-control input-sm" type="text" name="" typeahead-editable="false" typeahead-on-select="playerSelected($item, $model, $label, $index)" typeahead-select-on-exact="true">
+							<span x-ng-if="player.id"><strong> {{player.id}} </strong> - {{player.name}}</span>
+						</td>
+						<td>
+							<button x-ng-if="player.id" class="btn btn-sm btn-danger" x-ng-click="resetPlayer($index)">Kick</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+			<button class="btn btn-lg btn-success">Create Team</button>
+		</div>
+	</tab>
+</tabset>
+<script type="text/ng-template" id="typeaheadUserTemplate.html">
+  <a>
+      <span x-bind-html-unsafe="match.model.id | typeaheadHighlight:query"></span>
+      <span x-bind-html-unsafe="match.model.name | typeaheadHighlight:query"></span>
+  </a>
+</script>
