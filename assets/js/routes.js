@@ -14,6 +14,10 @@ app.config(["$routeProvider", function($routeProvider) {
 			templateUrl : "templates/tournamentList.html",
 			controller : "TournamentListController",
 		}).
+		when("/tournamentManagement", {
+			templateUrl : "templates/tournamentManagement.html",
+			controller : "TournamentManagementController",
+		}).
 		when("/subscription", {
 			templateUrl : "templates/subscription.html",
 			controller : "SubscriptionController"
