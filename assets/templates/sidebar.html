@@ -5,7 +5,7 @@
 	<ul class="nav nav-sidebar">
 		<x-ts-navlink path="/profile" title="My profile" x-ng-if="isConnected()"></x-ts-navlink>
 		<x-ts-navlink path="/tournaments" title="Tournaments"></x-ts-navlink>
-		<x-ts-navlink path="/subscription" title="Subscription"></x-ts-navlink>
+		<x-ts-navlink path="/subscription" title="Subscription" x-ng-if="isConnected()"></x-ts-navlink>
 	</ul>
 	<ul class="nav nav-sidebar">
 		<x-ts-navlink path="/teamManagement" title="Team Management"></x-ts-navlink>

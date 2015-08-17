@@ -52,7 +52,7 @@ module.exports = {
 
 		teams : {
 			collection : "team",
-			vial : "members",
+			via : "members",
 			dominant : true
 		},
 

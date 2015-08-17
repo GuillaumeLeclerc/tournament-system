@@ -6,6 +6,8 @@
  */
 
 module.exports = {
-	
+	check : function(req, res) {
+		res.json({ok : "ok"});
+	}
 };
 
