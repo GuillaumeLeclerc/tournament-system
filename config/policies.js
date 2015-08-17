@@ -35,7 +35,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 	TeamController : {
-		"*" : ["sessionAuth"],
+		"*" : [],
 	}
 	// RabbitController: {
 

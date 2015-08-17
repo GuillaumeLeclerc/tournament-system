@@ -1,8 +1,14 @@
 var app = angular.module("tournament-system");
 
-app.service("UserService", ["User", "$timeout", function(User, $timeout) {
-	var userInfo = User.get({id : "me"});
+app.service("UserService", ["User", "$timeout", "$rootScope", function(User, $timeout, $rootScope) {
+	var teams = [];
+	var userInfo = User.get({id : "me"}, function() {
+		userInfo.leads = User.leads({id : userInfo.id});
+		teams = User.leads({id : userInfo.id});
+	});
 	var currentUserInfo = null;
+	var allUsers = User.query();
+	var lastUserId = "";
 
 	return {
 		login : function(email, password, errorCallback) {
@@ -10,7 +16,6 @@ app.service("UserService", ["User", "$timeout", function(User, $timeout) {
 			l.email = email;
 			l.password = password;
 			l.$login().then(function() {
-				console.log(arguments);
 				userInfo = User.get({id : "me"});
 			}, function(jwr) {
 				$timeout(errorCallback);
@@ -25,7 +30,11 @@ app.service("UserService", ["User", "$timeout", function(User, $timeout) {
 		},
 
 		getUserInfo : function() {
-			return angular.copy(userInfo);
+			return userInfo;
+		},
+
+		getUsers : function() {
+			return allUsers;
 		}
 	}
 }]);
