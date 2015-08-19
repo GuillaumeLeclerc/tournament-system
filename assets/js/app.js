@@ -8,7 +8,8 @@ angular.module("tournament-system", [
 	"tournament-system.resources",
 	"ngRoute",
 	"ui.bootstrap",
-	"ui.bootstrap.tpls"
+	"ui.bootstrap.tpls",
+	"schemaForm"
 ])
 	.value("ts-version", "0.0.1a")
 	.value("ts-title", "Polysports tournament-system");

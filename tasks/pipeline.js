@@ -31,6 +31,13 @@ var jsFilesToInject = [
   'js/dependencies/bootstrap.min.js',
   'js/dependencies/angular.min.js',
   'js/dependencies/typeahead.min.js',
+  'js/dependencies/angular-sanitize.min.js',
+  'js/dependencies/tv4.js',
+  'js/dependencies/ObjectPath.js',
+  'js/dependencies/schema-form.min.js',
+  'js/dependencies/bootstrap-decorator.js',
+  'js/dependencies/picker.js',
+  'js/dependencies/picker.date.js',
   'js/dependencies/**/*.js',
 
   // All of the rest of your client-side js files
