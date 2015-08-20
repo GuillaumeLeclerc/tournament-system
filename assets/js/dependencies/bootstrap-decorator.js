@@ -1,0 +1,1 @@
+../../../bower_components/angular-schema-form/dist/bootstrap-decorator.js
