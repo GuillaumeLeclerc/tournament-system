@@ -1,10 +1,16 @@
 var app = angular.module("tournament-system");
 
-app.controller("NewTournamentModalController", ["$scope", "$modalInstance", function($scope, $modalInstance) {
+app.controller("NewTournamentModalController", ["$scope", "$modalInstance", "Tournament", function($scope, $modalInstance, Tournament) {
+	$scope.error = null; 
 	$scope.schema = {
 		type: "object",
+		required : ["name"],
 		properties: {
 			name: { type: "string", minLength: 2, title: "Name"},
+			nbMaxTeam : {
+				type : "number",
+				minimum : 1
+			},
 			nbMaxTeamPerSection : {
 				type : "number",
 				minimum : 1
@@ -45,5 +51,20 @@ app.controller("NewTournamentModalController", ["$scope", "$modalInstance", func
 		"*",
 	];
 
-	$scope.newTournament = {};
+	$scope.newTournament = new Tournament();
+	$scope.test = function() {
+		alert("form valid");
+	};
+
+	$scope.cancel = function() {
+		$modalInstance.dismiss("canceled");
+	}
+
+	$scope.clickedNew = function() {
+		$scope.newTournament.$save(function() {
+			$modalInstance.close();
+		}, function(error) {
+			$scope.error = error.summary;
+		});
+	};
 }]);
