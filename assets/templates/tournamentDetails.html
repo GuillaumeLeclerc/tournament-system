@@ -1,0 +1,58 @@
+<h1>{{tournament.name}} <small> Tournament</small></h1>
+
+<br/>
+<br/>
+
+<table class="table table-stripped table-bordered table-hover">
+	<tr>
+		<th width="50%">
+			Number of player per team
+		</th>
+		<td width="50%">
+			{{tournament.nbPlayerPerTeam}}
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Validation place
+		</th>
+		<td>
+			{{tournament.validationPlace}}
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Validation date
+		</th>
+		<td>
+			{{tournament.validationDate | date : medium}}
+		</td>
+	</tr>
+	<tr x-ng-if="tournament.startDate">
+		<th>
+			Start date
+		</th>
+		<td>
+			{{tournament.startDate}}
+		</td>
+	</tr>
+	<tr x-ng-if="tournament.endDate">
+		<th>
+			End date
+		</th>
+		<td>
+			{{tournament.endDate}}
+		</td>
+	</tr>
+	<tr>
+		<th>
+		</th>
+		<td>
+		</td>
+	</tr>
+</table>
+
+
+{{tournament | json}}
+
+
