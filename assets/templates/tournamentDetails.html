@@ -5,6 +5,14 @@
 
 <table class="table table-stripped table-bordered table-hover">
 	<tr>
+		<th>
+			Number of teams
+		</th>
+		<td>
+			<progress><bar value="getFillPercentage()" type="{{bar.type}}"><span style="color : black">{{tournament.teams.length}}/{{tournament.nbMaxTeam}}</span></bar></progress>
+		</td>
+	</tr>
+	<tr>
 		<th width="50%">
 			Number of player per team
 		</th>
